@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prova-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /esempiopercorso
+            pathType: Prefix
+            backend:
+              service:
+                name: servizio-di-prova
+                port:
+                  number: 80

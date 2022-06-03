@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: servizio-esterno-di-prova
+  labels:
+    app: app-di-prova
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30080 # deve essere compresa tra 30000 e 32767
+      protocol: TCP
+  selector:
+    app: app-di-prova

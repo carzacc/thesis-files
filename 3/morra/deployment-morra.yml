@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-morra
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: morra
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: morra
+    spec:
+      containers:
+        - name: container-morra
+          image: carminezacc/morra:1.0
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: credenziali-db-morra
+                  key: rootUser
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: credenziali-db-morra
+                  key: rootPassword
+            - name: MYSQL_DATABASE
+              value: morra
+            - name: REDIS_HOST
+              value: rfs-redis-morra
+            - name: MYSQL_HOST
+              value: cluster-db-morra

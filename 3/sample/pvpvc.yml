@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-prova # nome del PVC
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  volumeName: pv-prova # nome del PV da associare
+--- # inserendo il separatore "---" si ottiene l'equivalente di creare due file
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-prova # nome del PV
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+# ...
+# specifica del PV

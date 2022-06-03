@@ -1,0 +1,10 @@
+version: v1
+kind: Pod
+metadata:
+  name: nomePod
+spec:
+  containers:
+    - name: nomeContainer
+      image: nomeImmagine:tagImmagine
+      ports:
+        - containerPort: 80

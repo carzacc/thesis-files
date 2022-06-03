@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-di-prova
+spec:
+  replicas: 10 # numero di repliche del pod da eseguire sul cluster
+  selector: # selettore che associa Pod a questo deployment
+    matchLabels:
+      app: prova-pod
+  revisionHistoryLimit: 2 # versioni prec. conservate per rollback
+  progressDeadlineSeconds: 300 # sec max ordinari di creazione Pod
+  minReadySeconds: 10
+  strategy: # strategia di update
+    type: RollingUpdate
+    rollingUpdate: # limitazione aggiornamento ad un Pod alla volta
+      maxUnavailable: 1 # max un pod non disponibile durante update
+      maxSurge: 1 # max un pod oltre n. di replicas durante update
+  template: # specifica dei Pod da eseguire, come esempio Pod
+    metadata:
+      labels:
+        app: prova-pod
+    spec:
+      containers:
+        - name: containerdiprova
+          image: nginx
+          ports:
+            - containerPort: 80

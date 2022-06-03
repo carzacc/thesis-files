@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulset-di-prova
+spec:
+  selector:
+    matchLabels:
+      app: nome-app
+  serviceName: nome-servizio
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nome-app
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: nome-container
+          image: nome-immagine

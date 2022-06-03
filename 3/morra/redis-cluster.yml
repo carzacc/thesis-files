@@ -1,0 +1,9 @@
+apiVersion: databases.spotahome.com/v1
+kind: RedisFailover
+metadata:
+  name: redis-morra
+spec:
+  sentinel:
+    replicas: 2
+  redis:
+    replicas: 2

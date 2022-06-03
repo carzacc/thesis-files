@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulset-di-prova-con-volumi
+spec:
+  selector:
+    matchLabels:
+      app: app-di-prova-volumi
+  serviceName: nome-servizio
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app-di-prova-volumi
+    spec:
+      containers:
+        - name: nome-container
+          image: nomeimmagine
+          volumeMounts:
+            - name: nome-volume # mount volume su container come per normali Pod
+              mountPath: /percorso/nel/container
+  volumeClaimTemplates: # inizio specifica volumeClaimTemplates
+    - metadata:
+        name: nome-volume # nome del volume
+      spec: # specifica delle caratteristiche del PersistentVolumeClaim
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: nome-storage-class
+        resources:
+          requests:
+            storage: 10Gi

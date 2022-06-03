@@ -1,0 +1,11 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+kubernetesVersion: v1.24.0
+controllerManager:
+  extraArgs: # sposta la cartella dei FlexVolume in un percorso writable in FCOS
+    flex-volume-plugin-dir: "/etc/kubernetes/kubelet-plugins/volume/exec"
+networking: # definisce la subnet degli IP dei Pod
+  podSubnet: 10.244.0.0/16
+---
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: InitConfiguration

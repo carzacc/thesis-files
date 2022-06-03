@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: servizio-interno-di-prova
+  labels:
+    app: app-di-prova
+spec:
+  ports: # porte da aprire ad accesso esterno (protocollo facoltativo)
+    - port: 80
+      protocol: TCP
+  selector: # selettore dei label dei container da associare al servizio
+    app: app-di-prova

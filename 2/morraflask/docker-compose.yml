@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  web: # servizio che contiene l'app morra-flask
+    build: # build del container nella directory corrente
+      context: .
+      network: host # rete host durante la build per scaricare pacchetti
+    env_file: # file contenente le variabili d'ambiente
+      .env
+    ports:
+      - 5000:5000
+  redis: # servizio per lo store Redis
+    image: "redis" # sono dati temporanei, non serve un volume
+  mysql:
+    env_file:
+      .env # stesse variabili d'ambiente dell'applicazione
+    image: "mysql"
+    volumes: # utilizzo di un volume per preservare i dati del DB
+      - dbvol:/var/lib/mysql
+
+volumes: # elenco dei volumi da creare (in questo caso uno solo)
+  dbvol:

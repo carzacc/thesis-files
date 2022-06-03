@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-con-env-da-cm
+spec:
+  containers:
+    - name: nome-container
+      image: nome-immagine
+      env:
+        - name: NAME # nome della variabile d'ambiente
+          valueFrom:
+            configMapKeyRef:
+              name: esempio-configmap # nome della configmap
+              key: nome # key del valore nella configmap
+        - name: KEY
+          valueFrom:
+            configMapKeyRef:
+              name: esempio-configmap
+              key: chiave
+# risultato finale: variabili d'ambiente seguenti:
+# NAME=Carmine
+# KEY=valore

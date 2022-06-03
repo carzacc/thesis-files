@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-test-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mytestcontainer
+  replicas: 1
+  # ...
+  # ulteriori specifiche del Deployment
+  template:
+    metadata:
+      labels:
+        app: mytestcontainer
+    spec:
+      volumes:
+        - name: nome-volume
+          persistentVolumeClaim:
+            claimName: pvc-prova
+      containers:
+        - name: container-con-volume
+          image: nomeimmagine
+          volumeMounts:
+            - mountPath: "/percorso/nel/container"
+              name: nome-volume

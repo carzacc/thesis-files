@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-con-volume
+spec:
+  volumes:
+    - name: nome-volume
+      persistentVolumeClaim:
+        claimName: pvc-prova
+  containers:
+    - name: container-con-volume
+      image: nomeimmagine
+      volumeMounts:
+        - mountPath: "/percorso/nel/container"
+          name: nome-volume

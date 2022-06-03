@@ -1,0 +1,17 @@
+apiVersion: mysql.oracle.com/v2
+kind: InnoDBCluster
+metadata: # in cluster di produzione potrebbe essere utile indicare un namespace
+  name: cluster-db-morra
+spec:
+  secretName: credenziali-db-morra # secret creato in precedenza
+  tlsUseSelfSigned: true # permette l'uso di certificati TLS self-signed
+  instances: 2 # istanze del DB da eseguire
+  router:
+    instances: 1 # istanze router da eseguire
+  datadirVolumeClaimTemplate: # volumeClaimTemplate per i dati del database
+    storageClassName: manual
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
