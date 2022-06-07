@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: container-morra
-          image: carminezacc/morra:1.0
+          image: docker.io/carminezacc/morra:1.0
           ports:
             - containerPort: 5000
           env:

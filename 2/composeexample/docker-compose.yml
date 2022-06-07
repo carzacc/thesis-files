@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  primoservizio:
+    image: nomeimmagine
+    volumes:
+      - nomevolume:/percorso/in/container
+  secondoservizio:
+    build:
+        context: .
+        network: host
+    ports:
+      - <hport>:<cport>
+    depends_on:
+      - primoservizio
+volumes:
+  nomevolume: # importante ricordare i ":"
+
