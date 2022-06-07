@@ -1,7 +1,7 @@
 #!/bin/sh
 
 IGN_CONFIG=$HOME/k8s/fcos.ign
-IMAGE=$HOME/.local/share/libvirt/images/node$1.qcow2
+IMAGE=$HOME/.local/share/libvirt/images/fedora-coreos-36.20220505.3.2-qemu.x86_64.qcow2
 VM_NAME=node$1
 VCPUS=2
 RAM_MB=4096
