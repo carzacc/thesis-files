@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IGN_CONFIG=$HOME/k8s/fcos.ign
+IGN_CONFIG=$HOME/gits/thesis-files/3/morra/fcos.ign
 IMAGE=$HOME/.local/share/libvirt/images/fedora-coreos-36.20220505.3.2-qemu.x86_64.qcow2
 VM_NAME=node$1
 VCPUS=2

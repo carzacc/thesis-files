@@ -49,8 +49,12 @@ storage: # file da creare/sovrascrivere nella VM di ogni nodo
         inline: |
           net.bridge.bridge-nf-call-iptables=1
           net.ipv4.ip_forward=1
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: containertest
 passwd: # impostazione nome e credenziali utente da usare per l'accesso
   users:
     - name: core
       ssh_authorized_keys:
-        - <INCOLLARE QUI CHIAVE PUBBLICA>
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC58el75+070L/o2Bnk17ctrhKdB2GmYXnLL2d2JIAfxIOMzVqV1Hewsnyh7orn10T0mkfbZbytChcLNRWA/ZxnDff4FUFaMxRCZYayn26gdHyqfWV1vwUaC3hbFR4ELiuHOo72ZyQNS4V+nKhdnXNiTCsxGDWDYJ7unLa1GrW5ldcmUJj1udZCcsWYotWSSRBaGcWnk4500/40uEes3xZXNsVDu/kMM3SLlG/A7TDXb8D9Qi0X1AkPGSCYqQkaeEivhDYULvviCsww6Nk0Ad2XuQIEHQ0oevlhJf/9SUgO+SWjc2cyZiEcXX+D6j3QY6iRwIJ38CwxFBys/bvHCBSN7Hrp5RrOA1whrOMl8OPs7sWV7aI4Lxrbsk0ct8hkgGtczp3o5g+mfNacz63PWbHsPFotuuhz+iy5aGtI6tEb+krxvbawdAZhidlctgy2oTlfNcBGohp4IqlDscaZoMGWn7ha42OcoEJYNdWYcKGPfKiYGSpvMReADO+gC7XLvS0= carmine@DESKTOP-0DQT9GD.station
