@@ -1,4 +1,4 @@
-These steps won't include much commentary on the reasoning for the choices as that's all in my thesis.
+The cluster creation part has been expanded into [a dedicated blog post on carmine.dev](https://carmine.dev/posts/kubernetesclusterfcos/).
 
 # Creating a virtualized Kubernetes cluster using Fedora CoreOS VMs
 
