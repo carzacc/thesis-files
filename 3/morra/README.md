@@ -1,5 +1,7 @@
 The cluster creation part has been expanded into [a dedicated blog post on carmine.dev](https://carmine.dev/posts/kubernetesclusterfcos/).
 
+Unlike what is shown in the fcos.bu in this directory, disabling SELinux shouldn't be necessary. More information [in this post](https://carmine.dev/posts/kubernetesselinux/)
+
 # Creating a virtualized Kubernetes cluster using Fedora CoreOS VMs
 
 We are going to create a three-node cluster with one control plane and two workers.
